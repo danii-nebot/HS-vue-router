@@ -4,9 +4,6 @@
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style scoped>
 .fast-gradient {
   background: linear-gradient(

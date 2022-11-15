@@ -3,9 +3,16 @@
   <hr/>
   <!-- simple scenario: one component fetches async data -->
   <Suspense>
-    <YesNo/>
+    <YesNo class="async-component" />
     <template #fallback>
-      <img src="https://media.tenor.com/o8m3bKTsifUAAAAC/hold-on.gif" />
+      <SimpleLoading class="async-component" />
+    </template>
+  </Suspense>
+  <!-- simple scenario/2 API with auth headers -->
+  <Suspense>
+    <NBA class="async-component" />
+    <template #fallback>
+      <SimpleLoading class="async-component" />
     </template>
   </Suspense>
   <hr />
@@ -49,7 +56,8 @@
   import AsyncContent from './components/AsyncContent.vue'
   import Placeholder from './components/Placeholder.vue'
   import YesNo from './components/YesNo.vue'
-
+  import NBA from './components/NBA.vue'
+  import SimpleLoading  from "./components/SimpleLoading.vue";
   const error = ref('')
   const reload = () => {
     window.location.reload()

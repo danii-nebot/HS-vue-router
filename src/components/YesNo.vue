@@ -23,6 +23,8 @@
 </script>
 
 <template>
-  <p>{{ response.answer }}</p>
-  <img :src="response.image" />
+  <div>
+    <p>{{ response.answer }}</p>
+    <img :src="response.image" />
+  </div>
 </template>

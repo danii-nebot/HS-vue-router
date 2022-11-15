@@ -1,15 +1,3 @@
-<template>
-  <div class="async-component"
-    :class="{
-      'errored': error,
-      'loaded': !error
-    }"
-  >
-    <!-- We don't need a spinner here since loading is handled at the root -->
-    <slot />
-  </div>
-</template>
-
 <script setup>
   import { ref } from 'vue'
   const { time } = defineProps({
@@ -35,6 +23,18 @@
     }, time)
   })
 </script>
+
+<template>
+  <div class="async-component"
+    :class="{
+      'errored': error,
+      'loaded': !error
+    }"
+  >
+    <!-- We don't need a spinner here since loading is handled at the root -->
+    <slot />
+  </div>
+</template>
 
 <style scoped>
 </style>
