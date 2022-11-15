@@ -4,7 +4,7 @@
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'ddc20af37amshfb9b52bd2431cedp1fb5c3jsnf9b7701a8a05',
+      'X-RapidAPI-Key': `${import.meta.VITE_API_KEY}`,
       'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
     }
   }
