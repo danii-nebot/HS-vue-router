@@ -1,38 +1,52 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
-const Home = () => import('../views/HomePage.vue')
-const YesNoPage = () => import('../views/YesNoPage.vue')
-const About = () => import('../views/AboutPage.vue')
-const NotFound = () => import('../views/NotFound.vue')
-const Suspense = () => import('../views/SuspensePage.vue')
+// Async loading of Views
+const Home = () => import("../views/HomePage.vue");
+const YesNoPage = () => import("../views/YesNoPage.vue");
+const About = () => import("../views/AboutPage.vue");
+const NotFound = () => import("../views/NotFound.vue");
+const Suspense = () => import("../views/SuspensePage.vue");
+const MonstersPage = () => import("../views/MonstersListPage.vue");
+const MonsterPage = () => import("../views/MonsterDetailPage.vue");
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: "/",
+    name: "home",
+    component: Home,
   },
   {
-    path: '/yesno',
-    name: 'yesno',
-    component: YesNoPage
+    path: "/yesno",
+    name: "yesno",
+    component: YesNoPage,
   },
   {
-    path: '/about',
-    name: 'about',
-    component: About
+    path: "/about",
+    name: "about",
+    component: About,
   },
   {
-    path: '/suspense-example',
-    name: 'suspense',
-    component: Suspense
+    path: "/suspense-example",
+    name: "suspense",
+    component: Suspense,
   },
-  { path: '/:pathMatch(.*)*', name: 'notFound', component: NotFound },
-]
+  {
+    path: "/monsters",
+    name: "monsters",
+    component: MonstersPage,
+  },
+  {
+    path: "/monsters/:id",
+    name: "monster",
+    component: MonsterPage,
+    props: true,
+  },
+  { path: "/:pathMatch(.*)*", name: "notFound", component: NotFound },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
