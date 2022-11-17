@@ -15,7 +15,7 @@
     setTimeout(() => {
       if (Math.random() > ERROR_PERCENTAGE) {
         error.value = true
-        reject(new Error(`there was a ${ERROR_PERCENTAGE*100}% chance of this happening :(`))
+        reject(new Error(`there was a ${100 - ERROR_PERCENTAGE*100}% chance of this happening :(`))
       } else {
         console.log('loaded succesfully ' + time)
       }

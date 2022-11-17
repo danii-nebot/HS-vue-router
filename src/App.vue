@@ -2,6 +2,7 @@
     <header>
       <router-link class="plain-link" to="/">Home</router-link> |
       <router-link class="plain-link" to="/yesno">Yes No example</router-link> |
+      <router-link class="plain-link" to="/suspense-example">Suspense example</router-link> |
       <router-link class="plain-link" to="/about">About</router-link>
       <!-- <router-link class="plain-link" :to="{ name: 'apiList' }">API fetch</router-link> -->
     </header>
