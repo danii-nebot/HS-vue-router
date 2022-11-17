@@ -24,7 +24,7 @@
 
 <template>
   <div>
-    <p>{{ response.answer }}</p>
-    <img :src="response.image" />
+    <h2>{{ response.answer }}</h2>
+    <img style="height: 250px;" :src="response.image" />
   </div>
 </template>

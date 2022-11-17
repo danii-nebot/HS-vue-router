@@ -1,113 +1,22 @@
 <template>
-  <button @click="reload">Reload page</button>
-  <hr/>
-  <!-- simple scenario: one component fetches async data -->
-  <Suspense>
-    <YesNo class="async-component" />
-    <template #fallback>
-      <SimpleLoading class="async-component" />
-    </template>
-  </Suspense>
-  <!-- simple scenario/2 API with auth headers -->
-  <Suspense>
-    <NBA class="async-component" />
-    <template #fallback>
-      <SimpleLoading class="async-component" />
-    </template>
-  </Suspense>
-  <hr />
-   <!-- complex scenario, multiple components -->
-  <div class="async-component errored" v-if="error">
-  <!-- fallback error component -->
-    Uh oh .. {{ error }}
-  </div>
-  <Suspense v-else>
-    <AsyncContent :time="1000">
-      <AsyncContent :time="2000" />
-      <AsyncContent :time="300">
-        <AsyncContent :time="500" />
-        <!-- non blocking load -->
-        <Suspense>
-          <AsyncContent :time="5000" />
-          <template #fallback>
-            <Placeholder />
-          </template>
-        </Suspense>
-      </AsyncContent>
-    </AsyncContent>
-    <template #fallback>
-      <!-- Same structure as main content -->
-      <Placeholder>
-        <Placeholder />
-        <Placeholder>
-          <Placeholder />
-          <Placeholder />
-        </Placeholder>
-      </Placeholder>
-    </template>
-  </Suspense>
+    <header>
+      <router-link class="plain-link" to="/">Home</router-link> |
+      <router-link class="plain-link" to="/yesno">Yes No example</router-link> |
+      <router-link class="plain-link" to="/about">About</router-link>
+      <!-- <router-link class="plain-link" :to="{ name: 'apiList' }">API fetch</router-link> -->
+    </header>
+    <hr/>
+    <main>
+      <router-view />
+    </main>
 
-
-
+    <footer>
+      My nice footer | Dani Nebot 2022
+    </footer>
 </template>
-
-<script setup>
-  import { ref, onErrorCaptured } from "vue";
-  import AsyncContent from './components/AsyncContent.vue'
-  import Placeholder from './components/Placeholder.vue'
-  import YesNo from './components/YesNo.vue'
-  import NBA from './components/NBA.vue'
-  import SimpleLoading  from "./components/SimpleLoading.vue";
-  const error = ref('')
-  const reload = () => {
-    window.location.reload()
+<style scoped>
+  .plain-link {
+    color:darkslategray;
+    text-decoration: none;
   }
-  onErrorCaptured((e) => {
-    console.log('error', e)
-    error.value = e
-    return true
-  })
-</script>
-
-<style>
-html {
-  background: slategray;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin: 60px auto 0 auto;
-  max-width: 600px;
-}
-
-button {
-  padding: 4px 12px;
-  margin-bottom: 20px;
-  background: white;
-  font-size: 14px;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.async-component {
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 32px;
-  margin: 20px;
-}
-
-.loaded {
-  background: rgba(0, 255, 100, 0.2);
-  border-color: rgb(0, 255, 100);
-}
-
-.errored {
-  background: rgba(255, 0, 100, 0.2);
-  border-color: rgb(255, 0, 100);
-  color: white;
-}
 </style>
