@@ -10,7 +10,6 @@ npm install
 cp .env.template .env
 # and update value for new key (see Classroom stream)
 
-# add api key
 # serve with hot reload
 npm run dev
 
