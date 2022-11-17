@@ -1,4 +1,4 @@
-## Example of Suspense with async data
+## Example of Vue Router with Components that fetch async data ( + Suspense)
 
 ### Build Setup
 
