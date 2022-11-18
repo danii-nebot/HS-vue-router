@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted } from 'vue';
 const data = ref({});
 const options = {
-  method: "GET",
+  method: 'GET',
   // We don't actually need headers for this API call
   // but if we did, we can add them here:
   // headers: {
@@ -11,7 +11,7 @@ const options = {
   // }
 };
 
-const res = await fetch("https://www.dnd5eapi.co/api/monsters", options);
+const res = await fetch('https://www.dnd5eapi.co/api/monsters', options);
 if (!res.ok) {
   throw new Error();
 }
@@ -24,7 +24,9 @@ data.value = await res.json();
     <h2>Fetched data from DnD5 API:</h2>
     <ul class="scroll">
       <li v-for="monster in data.results" :key="monster.index">
-        <router-link :to="{ name: 'monster', params: { id: monster.index } }">
+        <router-link
+          :to="{ name: 'monster-info', params: { id: monster.index } }"
+        >
           {{ monster.name }}
         </router-link>
       </li>
