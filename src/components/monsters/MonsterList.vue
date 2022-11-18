@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import router from '../../router';
 const data = ref({});
 const options = {
   method: 'GET',
@@ -17,6 +18,13 @@ if (!res.ok) {
 }
 
 data.value = await res.json();
+
+function goto(id) {
+  router.push({
+    name: 'monster-info',
+    params: { id },
+  });
+}
 </script>
 
 <template>
@@ -28,6 +36,8 @@ data.value = await res.json();
           :to="{ name: 'monster-info', params: { id: monster.index } }"
         >
           {{ monster.name }}
+
+          <button @click="goto(monster.index)">go to this monster</button>
         </router-link>
       </li>
     </ul>
